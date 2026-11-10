@@ -1,0 +1,532 @@
+THE FLOOR IS YOURS
+UCC1101 | Academic Writing and Communication Skills | Completed Simulation Storyboard
+Builder-ready production specification · Version 1.0 · 2 November 2026
+One topic. One minute. Make your case.
+Authoring basis: the uploaded blank storyboard template and the approved concept in this conversation. Course synopsis
+not separately provided; alignment is to the previously supplied UCC1101 storyboard, subject to academic review.
+
+
+1 · Cover & Metadata
+ FIELD                                                          SUMMARY
+                                                                UCC1101 — Academic Writing and Communication Skills;
+ Course / topic                                                 assessed competency: oral academic argumentation and
+                                                                communication.
+ Simulation title                                               The Floor Is Yours
+ Designer / Builders                                            Precious Amaobi
+ Date / version                                                 2 November 2026 · 1.0
+                                                                First-year undergraduate students in an online open
+ Target learners                                                university; basic proficiency in spoken academic English
+                                                                and use of a microphone.
+                                                                4–7 minutes for one run, including a 60-second
+ Estimated duration                                             presentation; briefing and results are learner-paced.
+                                                                Technical microphone checks are untimed.
+                                                                Fictional online open university, virtual academic panel
+                                                                accessed from a learner’s remote study space. No
+ Setting                                                        compulsory physical campus attendance or traditional
+                                                                lecture-hall framing.
+                                                                Deliver a focused, coherent, academically appropriate
+ Learning objective                                             60-second oral argument that states a position, supports it
+                                                                with relevant reasoning and concludes persuasively.
+
+
+
+2 · Simulation Type Selector
+☑ Instrumented performance assessment (recorded one-minute speech) ☑ Dialogue / responsive panel feedback                ☐
+Evidence gathering ☐ Procedural sequencing ☐ Drag-and-drop ☐ Multiple-choice quiz
+Tone / voice / reading level: Contemporary, credible, supportive academic English. Virtual panel members use natural
+Nigerian English delivery if institutionally appropriate; no forced accent stereotypes. Briefings should be conversational and
+concise. Never announce scores during the speech.
+Core guardrail: Exactly THREE major scenes. One learner performance is scored. Topic selection is pre-scene; results and
+Finish are post-scene screens. No follow-up questions, rebuttal round, practice quiz, sentence cards or additional spoken
+tasks.
+
+
+3 · Design Intent and Scope
+The learner plays a first-year student invited to address an online academic review panel. They select one of three current
+university-policy debates and have 60 seconds to present their position. The simulation tests oral communication quality,
+not political agreement, essay writing, recall of facts, or ability to guess an approved answer.
+One run = one selected topic. Selection is locked at the start of Scene 1. The other topics are unavailable until the panel
+verdict has been delivered, results displayed, and the learner actively selects Finish Simulation. Only a completed/closed
+run can return to topic selection. Restart is a new run, not a continuation.
+
+
+
+
+                           THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+4 · The Premise
+Premise details
+ FIELD                                                             BUILD-READY SPECIFICATION
+                                                                   A first-year learner signs into an online open university’s
+                                                                   digital speaking challenge. A panel of three academics
+ The setting / world                                               appears as a credible remote video meeting. Learner joins
+                                                                   from their own location; panel members are in separate
+                                                                   virtual call tiles or a professional webinar layout.
+                                                                   Student representative giving one independent,
+ The learner’s role                                                evidence-conscious academic position to an online panel.
+                                                                   The university is reviewing a disputed academic policy.
+                                                                   The panel has invited short student submissions before
+ The problem / situation                                           making recommendations. The learner has a strict
+                                                                   speaking window.
+                                                                   Make an intelligible, logically organised case with a clear
+                                                                   position, at least two relevant supporting reasons if
+ The goal / objective                                              feasible, and an effective conclusion within the 60-second
+                                                                   cap.
+                                                                   A coherent viewpoint earns credit whether it supports,
+                                                                   rejects or conditionally modifies the proposed policy;
+ Success boundary                                                  argument quality is the target. No requirement to cite
+                                                                   invented statistics.
+
+
+
+Approved topic catalogue and full contextual briefings
+
+T01 — SOCIAL MEDIA IN LIVE ONLINE LECTURES
+Topic: Should Social Media Be Restricted During Live Online University Lectures?
+Context: The university delivers teaching through live virtual classrooms and recorded online materials. Learners often
+attend from home or work using laptops and phones. Some use social media while a lecture is in progress. The academic
+board is considering restrictions during scheduled live sessions, while recognising that students study on personal devices
+and some platforms support course discussion.
+Decision boundary: The issue is not banning social media across a student’s private life. It is whether the university should
+set expectations or technical restrictions specifically during live online lectures.
+Legitimate argument directions: FOR: fewer distractions, greater attention, clearer class norms. AGAINST: adult learner
+autonomy, accessibility and device constraints, social platforms as learning tools, difficulty enforcing restrictions remotely.
+QUALIFIED: restrict non-course use during specific moments, encourage self-management, or set agreed digital etiquette.
+Briefing narrator — approved draft: “Our university teaches online. During a live lecture, the same device that connects a
+student to learning can also open a stream of notifications. The academic board is considering whether social media use
+should be restricted during scheduled live sessions. Some argue this protects concentration; others say open-university
+learners need flexibility and digital autonomy. You have sixty seconds to recommend a position. Make your case.”
+
+T02 — AI AND ACADEMIC ASSIGNMENTS
+Topic: Should University Students Be Allowed to Use AI for Assignments?
+Context: The academic committee is reviewing responsible use of generative AI in coursework. Tutors report that AI may
+help with research planning and language support; they also worry about submitting machine-generated work as original
+scholarship. The policy must be clear and fair for remote learners.
+Decision boundary: The question concerns appropriate permission and safeguards, not whether technology should exist.
+Students may defend permission, prohibition in specified assessed tasks, or conditional use with disclosure.
+
+
+
+
+                            THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+Legitimate argument directions: FOR: guided learning support, accessibility, feedback and productivity. AGAINST:
+dependency, unreliable outputs, authenticity and academic integrity. QUALIFIED: permitted for brainstorming or editing
+with disclosure, but not undisclosed full-answer generation.
+Briefing narrator — approved draft: “Generative AI is becoming part of how students study and write. Our academic
+committee must decide what role it should have in assignments. Some see an opportunity for learning support; others see
+risks to independent thinking and academic integrity. You have sixty seconds to recommend a policy that is educationally
+defensible. Make your case.”
+
+T03 — ATTENDANCE AND FLEXIBLE LEARNING
+Topic: Should Attendance at Live Online Lectures Be Compulsory?
+Context: An online open university offers scheduled live webinars alongside recordings, asynchronous resources and
+flexible study schedules. A proposal would make attendance at live online lectures compulsory, even though students may
+balance jobs, care responsibilities, bandwidth limitations and time zones.
+Decision boundary: Attendance refers to synchronous virtual lectures, not entering a physical classroom. Student
+engagement and learning outcomes are separate from merely logging in.
+Legitimate argument directions: FOR: live participation, accountability, immediate feedback, peer discussion. AGAINST:
+conflicts with open learning access, connectivity challenges, equivalent asynchronous learning. QUALIFIED: compulsory
+participation for selected interactive sessions, with accessible alternatives.
+Briefing narrator — approved draft: “This university was designed for flexible online learning. Students can attend live
+sessions, but many also depend on recordings because of work, family or connectivity. Management is considering
+compulsory attendance at live online lectures. Supporters expect more participation; critics question whether attendance
+measures learning. You have sixty seconds to advise the academic panel. Make your case.”
+
+
+5 · State & Scoring Framework
+The template’s three tracked strands are retained for reporting, but exactly four operational criteria generate the 100-point
+score. Every criterion uses explicit behavioural anchors and the same scoring rule on all three topics. Scene 2 supplies
+speech evidence; Scene 3 presents results. Scene 1 is unscored.
+
+ STRAND                                    MEASURES                                  SOURCE
+                                           Clarity of position (30) and supporting
+ Argument Content                          reasoning (30)
+                                                                                     60 points combined
+                                           Organisation, coherence and
+ Communication Structure                   conclusion (25)
+                                                                                     25 points
+                                           Intelligibility, pace and
+ Oral Delivery                             audience-appropriate delivery (15)
+                                                                                     15 points
+
+
+Each criterion is rated with integer proficiency level L = 0, 1, 2, 3 or 4. Criterion points = weight × L ÷ 4. Store exact
+decimals and round only the final total to nearest whole number (half up). Example: Clarity 3/4 = 22.50; Reasoning 2/4 =
+15.00; Structure 4/4 = 25.00; Delivery 3/4 = 11.25; TOTAL 73.75 → 74/100.
+
+ LEVEL                                                          GLOBAL ANCHOR
+                                                                Clear, consistently demonstrated and appropriate to the
+ 4 — Strong                                                     60-second task.
+ 3 — Competent                                                  Mostly effective, with minor weaknesses.
+                                                                Partially effective, with noticeable weaknesses or
+ 2 — Developing                                                 omissions.
+ 1 — Limited                                                    Minimal evidence, unclear or substantially incomplete.
+                                                                No usable evidence of the criterion in the submitted
+ 0 — Not demonstrated                                           attempt.
+
+
+
+Clarity of Position — 30 points
+ LEVEL                                                          BEHAVIOURAL DESCRIPTOR
+ 0                                                              No discernible position or no intelligible speech.
+                           THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+ 1                                                                Position hinted at but cannot be reliably identified.
+ 2                                                                Position identifiable only after ambiguity or contradiction.
+ 3                                                                Position explicit and mostly sustained.
+                                                                  Position precise, early, unambiguous and consistently
+ 4                                                                maintained.
+
+
+
+Supporting Reasoning — 30 points
+ LEVEL                                                            BEHAVIOURAL DESCRIPTOR
+ 0                                                                No discernible supporting reason.
+ 1                                                                Only assertion, repetition or unrelated reason.
+ 2                                                                One relevant reason or two weak/undeveloped reasons.
+                                                                  At least two relevant reasons with some explanation or
+ 3                                                                one strong, well-developed reason.
+                                                                  Relevant, convincing reasons explained and tightly linked
+ 4                                                                to position; avoids unjustified factual certainty.
+
+
+
+Organisation and Coherence — 25 points
+ LEVEL                                                            BEHAVIOURAL DESCRIPTOR
+ 0                                                                No discernible sequence.
+ 1                                                                Disjointed statements without useful progression.
+                                                                  Some progression but weak transitions and/or no clear
+ 2                                                                close.
+                                                                  Logical opening/development and a recognisable
+ 3                                                                conclusion, with minor gaps.
+                                                                  Economical, logical flow; purposeful transition and
+ 4                                                                conclusion reinforcing the claim.
+
+
+
+Oral Delivery — 15 points
+ LEVEL                                                            BEHAVIOURAL DESCRIPTOR
+ 0                                                                No audible/intelligible speech despite successful capture.
+                                                                  Predominantly hard to understand or severely
+ 1                                                                inappropriate pace/register.
+                                                                  Partly intelligible with persistent pace, fluency or register
+ 2                                                                problems.
+                                                                  Mostly intelligible, appropriately paced and academically
+ 3                                                                suitable.
+                                                                  Clearly intelligible, controlled pace, natural emphasis and
+ 4                                                                appropriate academic register.
+
+
+Topic neutrality: Do not award or deduct points for supporting a restriction, opposing it or proposing a conditional policy.
+Assess relevance and logical coherence, not whether the learner matches a panel member’s preferred stance.
+Evidence restraint: Do not require statistics or named sources in a one-minute speech. If a learner uses fabricated, highly
+implausible or unsupportable certainty, reflect the weakness only where it affects reasoning; do not secretly run a fact trivia
+test.
+Duration: Recording is capped at 60.0 s. Starting speech late or stopping early is not an automatic duration penalty; assess
+the captured performance only. Do not score timing separately. Silence with valid capture receives 0 across demonstrated
+criteria.
+Evaluation failure: If speech transcription or audio delivery analysis fails, do not fabricate a mark. Show Evaluation
+unavailable, preserve the recording securely, and offer Retry evaluation (same file; no new performance) or contact
+support. If no valid audio file exists due to a technical error, permit one technical re-record without marking the failed
+attempt.
+
+
+
+                           THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+Human-review caution: Automated ratings are formative estimates, not guaranteed objective or equivalent to human
+marking. Provide a facilitator override with reason and audit trail. Accent, disability-related speech traits and non-native
+fluency must not be penalised where meaning remains intelligible.
+Running log: Store run_id, pseudonymous learner_id/display name, chosen topic ID, timestamps, audio consent,
+microphone test state, recording duration, audio reference, transcript and confidence/quality flags, per-criterion
+level/points/evidence text, feedback branch, final score/status, and finish timestamp. No logging of unnecessary personal
+data.
+
+
+6 · Structure & Flow
+STANDARD MIVA SHELL: institutional logo splash → landing page → Identify Yourself → single-topic selection → Scene 1
+briefing → Scene 2 live pitch → Scene 3 panel verdict → final result → Finish Simulation → main menu. Logo and
+institution name are configuration-driven. All three topics share the same scene mechanics, evaluation weights and panel
+character identities.
+
+Pre-scene: Topic Selection (not a fourth scene)
+ FIELD                                                           BUILD-READY SPECIFICATION
+                                                                 Three premium topic cards with short issue summary and
+ Situation                                                       estimated time. Learner may inspect descriptions without
+                                                                 starting a run.
+                                                                 Select ONE topic and click Enter Briefing. This locks
+ Interaction                                                     chosen topic for the active run.
+                                                                 Selected card becomes active, session is created, other
+ Response / indicator                                            topics become unavailable. Abandon/change topic is not
+                                                                 offered during an active run.
+ State change                                                    run_id created; status=active; topic_id fixed; score unset.
+ Goes to                                                         Scene 1 for selected topic.
+
+
+
+Scene 1 — The Briefing
+ FIELD                                                           BUILD-READY SPECIFICATION
+                                                                 A concise cinematic video briefing uses topic-specific
+                                                                 script in Section 4. The setting is unmistakably an online
+ Situation                                                       open university: learner works remotely; digital
+                                                                 lecture/work platforms appear only as background context;
+                                                                 panel joins virtually.
+                                                                 One action: Continue to Panel after the topic briefing.
+ Interaction                                                     Subtitles and replay of the briefing are accessibility
+                                                                 controls, not separate tasks.
+                                                                 A mission overlay confirms the selected issue, academic
+                                                                 audience, speaking time 60 seconds, one submitted
+ Response / indicator                                            performance, and neutral support for any defensible
+                                                                 stance.
+                                                                 Three unobtrusive speaking cues: State your position; give
+ Teaching content                                                relevant reasons; close convincingly. No content quiz.
+ State change                                                    briefing_complete=true; topic remains locked; no score.
+ Goes to                                                         → Scene 2.
+
+
+
+Scene 2 — The 60-Second Pitch
+ FIELD                                                           BUILD-READY SPECIFICATION
+                                                                 A professional 3-person virtual academic panel appears
+                                                                 on a live-call interface. Chair gives a short introduction;
+ Situation                                                       topic title remains small and legible; speaker can check
+                                                                 microphone before speaking.
+                                                                 ONE assessed activity: activate Begin Presentation and
+ Interaction                                                     deliver ONE recorded 60-second speech. Start is enabled
+                           THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+                                                     only after mic permission and readiness. Recording and
+                                                     60.0 s timer begin in sync; stop automatically. No pause,
+                                                     reset, mid-speech prompts, follow-up questions or second
+                                                     try for content.
+                                                     Visible countdown from 01:00, subtle waveform/input-level
+                                                     meter, status “Recording”. At 00:00 capture ends and
+Response / indicator                                 moves to evaluation transition. If capture invalid, show
+                                                     technical retry rather than silently scoring zero.
+                                                     Chair says: “State your position, support it with reasons,
+                                                     and bring your argument to a clear close. You have one
+Teaching content                                     minute.” The on-screen three-cue guide remains optional
+                                                     and minimal.
+                                                     audio_reference, duration_seconds, recording_integrity,
+State change                                         submitted_at; status=awaiting_evaluation. Audio and
+                                                     transcript are associated with selected topic.
+                                                     → Scene 3 once audio is captured and assessment
+Goes to                                              completes; recoverable evaluation errors stay in Scene 3
+                                                     error state.
+
+
+
+Scene 3 — The Panel’s Verdict
+FIELD                                                BUILD-READY SPECIFICATION
+                                                     Same virtual panel; the chair or relevant panelist delivers a
+                                                     short evidence-specific verdict. The visual response is a
+Situation                                            reusable panel video/portrait with separately generated
+                                                     audio/TTS text, not a generic fixed “good job” response.
+                                                     ONE completion action: review the spoken panel verdict
+Interaction                                          and open results. No response questions, rebuttals or
+                                                     resubmission.
+                                                     Panel addresses strongest observable feature, most
+                                                     important improvement, and overall judgement using
+Response / indicator                                 dynamic conditional wording. Results show score and
+                                                     criterion levels only after evaluation succeeds.
+                                                     Concise feedback models what made the oral argument
+Teaching content                                     persuasive or unpersuasive. Revisit the 3 speaking cues,
+                                                     linked to actual speech evidence, not canned praise.
+                                                     assessment_status=complete; levels and score saved;
+State change                                         verdict ID and feedback displayed. Run remains active
+                                                     until Finish Simulation on result screen.
+Goes to                                              → Final Result / Finish (post-scene screen).
+
+
+
+Post-scene: Final Result and Closure (not a fourth scene)
+FIELD                                                BUILD-READY SPECIFICATION
+                                                     Score /100 is largest element, plus topic, 3 strand
+                                                     summaries, four criterion ratings, one strength, one
+Situation                                            improvement and optional replay/transcript (subject to
+                                                     consent).
+                                                     Finish Simulation closes run. Replay recording is passive
+Interaction                                          review, not assessment.
+                                                     After Finish, mark status=finished, preserve audit, return to
+Response / indicator                                 menu where the learner may choose a different topic for a
+                                                     NEW run.
+                                                     finished_at recorded; topic lock released only for new run;
+State change                                         old run immutable.
+Goes to                                              → Main menu / new topic selection.
+
+
+
+
+                       THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+7 · Audio / Video Production Spec
+ ELEMENT                                                         SPECIFICATION
+                                                                 16:9; responsive desktop and mobile; 1080p source
+                                                                 master where possible. Briefing approximately 30–45
+ Format / duration                                               seconds; chair setup 8–12 seconds; 60-second capture;
+                                                                 panel verdict 15–25 seconds; total experience about 4–7
+                                                                 minutes.
+                                                                 Narrator: clear, warm Nigerian English. Panel chair:
+                                                                 composed, academically credible voice. Two additional
+ Voices                                                          panelists: distinct, natural Nigerian voices. Speech capture
+                                                                 uses learner’s real microphone; never replace or simulate
+                                                                 learner speech.
+                                                                 Premium uncluttered remote webinar/video-meeting
+                                                                 experience; no physical lecture theatre or traditional
+ Visual style                                                    on-campus procession. Panels can have slight head/eye
+                                                                 movement and occasional listening reaction; do not falsely
+                                                                 imply real-time lip-sync to unpredictable learner speech.
+                                                                 Default-on subtitles, high contrast, keyboard controls,
+ Accessibility                                                   speech timer annunciation for assistive technology, and
+                                                                 transcript review subject to assessment integrity.
+                                                                 Fixed: three topics, online-open-university premise, one
+                                                                 speech per run, 60s cap, criteria/weights, completion lock,
+ Fixed vs open                                                   substantive scripts. Open: panel styling, minor décor,
+                                                                 incidental music (none during recording), camera angles,
+                                                                 transitional animation.
+
+
+
+Full Transcript — Scripted Audio
+Splash: [AUDIO CUE: subtle electronic identity sound, no speech required.]
+Landing narration (optional): “Three questions. One choice. One minute to make your case. The floor is yours.”
+Topic selection: [NO AUTOMATIC SPEECH; titles and topic descriptions displayed. Learner selects one.]
+Scene 1 briefing · T01 — SOCIAL MEDIA IN LIVE ONLINE LECTURES
+[VISUAL CUE: remote learner setting, abstract online learning interface, then a virtual panel invite. No literal interface text
+baked into film.]
+NARRATOR: “Our university teaches online. During a live lecture, the same device that connects a student to learning can
+also open a stream of notifications. The academic board is considering whether social media use should be restricted
+during scheduled live sessions. Some argue this protects concentration; others say open-university learners need flexibility
+and digital autonomy. You have sixty seconds to recommend a position. Make your case.”
+
+Scene 1 briefing · T02 — AI AND ACADEMIC ASSIGNMENTS
+[VISUAL CUE: remote learner setting, abstract online learning interface, then a virtual panel invite. No literal interface text
+baked into film.]
+NARRATOR: “Generative AI is becoming part of how students study and write. Our academic committee must decide what
+role it should have in assignments. Some see an opportunity for learning support; others see risks to independent thinking
+and academic integrity. You have sixty seconds to recommend a policy that is educationally defensible. Make your case.”
+
+Scene 1 briefing · T03 — ATTENDANCE AND FLEXIBLE LEARNING
+[VISUAL CUE: remote learner setting, abstract online learning interface, then a virtual panel invite. No literal interface text
+baked into film.]
+NARRATOR: “This university was designed for flexible online learning. Students can attend live sessions, but many also
+depend on recordings because of work, family or connectivity. Management is considering compulsory attendance at live
+
+
+                           THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+online lectures. Supporters expect more participation; critics question whether attendance measures learning. You have
+sixty seconds to advise the academic panel. Make your case.”
+
+Scene 2 · Panel chair — common script
+[VISUAL CUE: virtual panel joins; chair speaks directly to camera. Subtitles synchronised.]
+CHAIR: “Welcome. We have invited you to present your position on the issue you selected. We will assess how clearly you
+make your case, not which side you take. State your position, support it with reasons, and bring your argument to a clear
+close. You have sixty seconds. Begin when you are ready.”
+[ACTION CUE: Begin Presentation starts audio capture and 60-second timer simultaneously after microphone permission.
+No scripted speech during capture. Panel maintains attentive expressions. At 00:00 recording ends.]
+
+Scene 3 · Panel verdict — dynamic response templates
+Production instruction: do not render a single fixed positive video for all users. Compute assessment first, then compose a
+short natural-language response from documented evidence. Use voice generation or text-on-screen fallback from this
+response text. Panel still imagery/video may be reused, but spoken claim must match scoring facts.
+
+ RESULT BAND                                                      PANEL OPENING LINE
+                                                                  “You presented a compelling and well-organised academic
+ 85–100 Strong                                                    argument.”
+                                                                  “Your argument was clear and persuasive in several
+ 70–84 Effective                                                  important respects.”
+                                                                  “You established a position, but parts of the argument
+ 50–69 Developing                                                 need stronger communication.”
+                                                                  “Your presentation did not yet communicate a sufficiently
+ 0–49 Needs improvement                                           clear and supported argument.”
+
+
+Verdict assembly order: (1) band opening line; (2) one criterion-specific strength, only if a criterion level ≥3; (3) one specific
+improvement chosen from the LOWEST scoring criterion (tie-break: Reasoning → Position → Structure → Delivery); (4)
+neutral closure: “Use this feedback to strengthen your next academic presentation.” For scores with no criterion ≥3 replace
+strength with “We were able to identify [accurate observed feature], but it needs more development.” If no intelligible
+content is captured, say so accurately, without inventing an argument.
+
+ CRITERION                                  STRENGTH WHEN L≥3                           IMPROVEMENT WHEN LOW
+                                            “Your position was easy to identify         “State your position in one clear
+ Position                                   and remained consistent.”                   sentence near the beginning.”
+                                                                                        “Explain why your reasons support
+                                            “You connected your supporting
+ Reasoning                                  reasons to your position.”
+                                                                                        the position, rather than only asserting
+                                                                                        it.”
+                                            “Your opening, development and
+                                                                                        “Give your speech a clearer opening,
+ Structure                                  conclusion followed a logical
+                                                                                        progression and final takeaway.”
+                                            sequence.”
+                                                                                        “Aim for a clearer pace and more
+                                            “Your pace and articulation made the
+ Delivery                                   argument easy to follow.”
+                                                                                        intelligible delivery while preserving
+                                                                                        your natural voice.”
+
+
+Fallback when response synthesis fails: Display the text verdict derived from fixed criterion templates; do not play an
+unrelated canned video or fabricate completed audio.
+Outro after Finish: [SFX: soft completion sound.] Optional caption: “Your presentation is complete.” Return to topic
+selection. No extra spoken reflection question.
+
+
+8 · Debrief & Leaderboard
+Final score = sum of four weighted criterion points, using L/4 anchors as specified in Section 5. Example (L 3/2/4/3): 22.50
++ 15 + 25 + 11.25 = 73.75 → 74/100. Strand totals are 60/25/15. The learner receives criterion levels, evidence-linked
+justification and an editable-for-facilitators assessment log. No leaderboard by default: ranking oral communication across
+varied devices may create inequity and is not needed for the learning goal.
+                           THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+Score bands: 85–100 Strong; 70–84 Effective; 50–69 Developing; 0–49 Needs improvement. Bands are descriptive, not
+pass/fail gates. No penalty for selecting a particular policy stance.
+Not scored: Topic selected, learner name, number of briefing replays, time spent reading, cosmetic theme, panel facial
+movement, and attempts at microphone diagnostics. Speaking duration is capped but not independently graded.
+Evaluation process: 1. Validate captured audio and duration. 2. Run speech-to-text and acoustic assessment. 3. Identify
+thesis/position, supporting reasoning and structure from actual transcript. 4. Rate each criterion 0–4 using fixed anchors;
+audio determines delivery. 5. Save text evidence (short transcript excerpts/timestamps) and criterion justifications. 6.
+Calculate weighted score. 7. Select dynamic panel wording based on grounded ratings. 8. Offer facilitator review/override.
+Missing or low-confidence data: If automatic analysis cannot distinguish words sufficiently, do not claim to assess content
+with confidence. Mark Needs review; do not display a made-up final score. Learner can still complete the run with Pending
+facilitator review status, after receiving an honest interim response.
+Backend schema (minimum): runs(run_id, learner_id, topic_id, status, created_at, briefing_complete_at, started_at,
+submitted_at, finished_at, microphone_status, recording_duration, audio_uri, transcript, transcript_quality,
+permission_consent); evaluations(run_id, criterion_id, level_0_to_4, weight, points, evidence_note, assessor_type,
+model_version, reviewed_at); outcomes(run_id, score, band, verdict_text, strength, improvement, status).
+Facilitator dashboard: Filter by topic/status/date; inspect playback and transcript only where authorised; see criterion
+scores and evidence, technical failures, assessment confidence, and override history. Export aggregate anonymised rubric
+results. Never expose another learner’s audio.
+Privacy & retention: Ask for microphone permission and clear recording/assessment disclosure before capture. Provide
+institution-configurable recording retention and deletion policy; do not promise a specific retention period without
+institutional approval. Access-control raw audio, transcripts and marking logs. Do not display learner names publicly.
+
+
+9 · Accessibility Requirements
+●​   ☑ Default-on captions for all scripted spoken content; 18px minimum and high contrast.
+●​   ☑ Keyboard/tab/screen-reader access to topic cards, Continue, Begin, results and Finish.
+●​   ☑ Minimum 44px touch targets on interactive controls.
+●​   ☑ Accessible countdown label, live timer announcement without disrupting the recorded speech, and optional visual
+     countdown.
+●​   ☑ Microphone setup instructions and permissions are legible and actionable.
+●​   ☑ Never rely on colour alone to communicate status or score.
+●​   ☑ Provide text equivalent for panel feedback and captions for all generated speech.
+●​   ☑ Reasonable accommodation / alternative assessment workflow for learners unable to record speech; route via
+     facilitator rather than silently awarding zero.
+●​   ☑ Speech recognition must tolerate legitimate accents and avoid dialect-based deductions.
+●​   ☑ On connectivity loss, show accurate recording/evaluation status and enable recovery without generating false
+     scores.
+
+
+Implementation Acceptance Checklist
+●​   Exactly 3 scenes appear; title, identity, topic picker and result are non-scene screens.
+●​   Topic 1 describes live ONLINE lectures and personal devices; no campus lecture hall imagery. Topic 3 refers to live
+     virtual attendance versus recordings.
+●​   One topic locked per active run; other topics become selectable only after Finish Simulation.
+●​   One user speech capture per valid run; exactly 60 seconds maximum. No multiple-choice or extra oral rounds.
+●​   Timer and recording start together; microphone failures trigger technical recovery, not invalid score.
+●​   All four rubric criteria use 0–4 behaviour anchors and weights 30/30/25/15.
+●​   Both pro and con policy positions can earn 100/100.
+●​   Panel verdict references actual recorded performance and score; no generic response mismatch.
+●​   No score shown when assessment lacks usable evidence; pending review state supported.
+●​   Completed result includes overall score prominently, criterion breakdown, one strength and one improvement.
+●​   Subtitles, keyboard support, privacy controls, and facilitator override work end-to-end.
+
+
+                           THE FLOOR IS YOURS • UCC1101 • Simulation Storyboard | v1.0
+

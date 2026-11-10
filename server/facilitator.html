@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Facilitator review</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f7f6f2;--ink:#262624;--muted:#686862;--line:#e4e2dc;font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+body{margin:0;padding:28px;max-width:1100px;margin:auto}h1{font-size:20px}h2{font-size:16px;margin:0 0 6px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+.meta{color:var(--muted);font-size:13px}button{font:inherit;background:#20201e;color:#fff;border:0;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:36px}
+button.q{background:none;color:var(--ink);border:1px solid var(--line)}input,textarea,select{font:inherit;border:1px solid var(--line);border-radius:8px;padding:7px 9px}
+textarea{width:100%;min-height:60px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-top:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.pill{font-size:12px;border:1px solid var(--line);border-radius:20px;padding:2px 9px}
+pre{white-space:pre-wrap;background:#faf9f6;border-radius:8px;padding:10px;font-size:13px}
+</style>
+</head>
+<body>
+<h1>Facilitator review</h1>
+<p class="meta">Role-protected. Listen to the recording before rating delivery. Overrides require a reason and are kept as an append-only revision history.</p>
+<form id="login" class="card row"><label>Facilitator token <input type="password" id="token" autocomplete="off"></label><button>Sign in</button><span id="loginMsg" class="meta"></span></form>
+<div id="list"></div>
+<script type="module">
+const $ = s => document.querySelector(s);
+const post = (u, b) => fetch(u, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(b) }).then(async r => ({ ok: r.ok, data: await r.json().catch(() => ({})) }));
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+$('#login').onsubmit = async e => { e.preventDefault(); const r = await post('/api/facilitator/login', { token: $('#token').value }); $('#loginMsg').textContent = r.ok ? 'Signed in.' : r.data.error; if (r.ok) load(); };
+async function load() {
+  const r = await fetch('/api/facilitator/queue');
+  if (!r.ok) { $('#list').innerHTML = `<p class="meta">${esc((await r.json()).error)}</p>`; return; }
+  const { items } = await r.json();
+  $('#login').hidden = true;
+  $('#list').innerHTML = items.length ? '' : '<p class="meta">No submitted recordings yet.</p>';
+  for (const it of items) {
+    const el = document.createElement('section'); el.className = 'card';
+    const ev = it.evaluation;
+    el.innerHTML = `<h2>${esc(it.displayName)} · ${esc(it.topic)}</h2>
+      <div class="row"><span class="pill">${esc(it.status)}</span>${it.jobStage ? `<span class="pill">job: ${esc(it.jobStage)}</span>` : ''}${it.reviewRequested ? '<span class="pill">review requested</span>' : ''}<span class="meta">${it.duration?.toFixed(1)}s · ${esc(it.updatedAt)}</span></div>
+      ${it.jobMessage ? `<p class="meta">${esc(it.jobMessage)}</p>` : ''}
+      <audio controls preload="none" src="/api/facilitator/runs/${it.runId}/audio"></audio>
+      <details><summary>Transcript</summary><pre>${esc(it.transcript || '(no transcript)')}</pre></details>
+      ${ev ? `<table><tr><th>Criterion</th><th>Level</th><th>Justification</th></tr>${ev.ratings.map(r => `<tr><td>${r.id}</td><td><select data-c="${r.id}">${[0,1,2,3,4].map(l => `<option ${l === r.level ? 'selected' : ''}>${l}</option>`).join('')}</select></td><td>${esc(r.justification)}</td></tr>`).join('')}</table>
+        <p><strong>${ev.scoreRounded}/100</strong> (${ev.scoreExact}) ${esc(ev.band)} · delivery: ${esc(ev.deliveryAssessor)} · revisions: ${ev.revisions.length}</p>
+        <div class="row"><input placeholder="Reviewer" data-f="rev"><input placeholder="Reason for override" data-f="reason" size="40"><button data-a="override">Save override</button></div>` : ''}
+      ${it.jobStage === 'needs-review' ? `<div class="card"><h2>Rate delivery from the audio</h2><div class="row"><input placeholder="Reviewer" data-d="rev"><select data-d="level">${[0,1,2,3,4].map(l => `<option>${l}</option>`).join('')}</select></div>
+        <textarea data-d="just" placeholder="Justification"></textarea><div class="row"><input data-d="s" placeholder="start s" size="6"><input data-d="e" placeholder="end s" size="6"><input data-d="obs" placeholder="What you heard" size="50"></div><button data-a="delivery">Submit delivery rating</button></div>` : ''}
+      ${it.jobStage === 'failed' ? '<button class="q" data-a="retry">Retry assessment (same file)</button>' : ''}
+      ${it.reviewRequested ? '<button class="q" data-a="resolve">Mark review resolved</button>' : ''}
+      <p class="meta" data-msg></p>`;
+    const msg = t => el.querySelector('[data-msg]').textContent = t;
+    el.querySelector('[data-a="override"]')?.addEventListener('click', async () => {
+      const changes = [...el.querySelectorAll('select[data-c]')].map(s => ({ id: s.dataset.c, level: Number(s.value) }));
+      const r = await post(`/api/facilitator/evaluations/${ev.id}/override`, { reviewer: el.querySelector('[data-f=rev]').value, reason: el.querySelector('[data-f=reason]').value, changes });
+      msg(r.ok ? `Saved. New score ${r.data.scoreRounded}.` : r.data.error);
+    });
+    el.querySelector('[data-a="delivery"]')?.addEventListener('click', async () => {
+      const g = k => el.querySelector(`[data-d=${k}]`).value;
+      const r = await post(`/api/facilitator/jobs/${it.jobId}/delivery`, { reviewer: g('rev'), level: Number(g('level')), justification: g('just'), evidence: [{ start: Number(g('s')), end: Number(g('e')), observation: g('obs') }] });
+      msg(r.ok ? 'Delivery saved; assessment resumed.' : r.data.error);
+    });
+    el.querySelector('[data-a="retry"]')?.addEventListener('click', async () => { const r = await post(`/api/facilitator/runs/${it.runId}/retry`, {}); msg(r.ok ? 'Retry started.' : r.data.error); });
+    el.querySelector('[data-a="resolve"]')?.addEventListener('click', async () => { const r = await post(`/api/facilitator/reviews/${it.runId}/resolve`, { reviewer: 'facilitator' }); msg(r.ok ? 'Resolved.' : r.data.error); });
+    $('#list').append(el);
+  }
+}
+load();
+</script>
+</body>
+</html>

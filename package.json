@@ -1,0 +1,45 @@
+{
+  "name": "the-floor-is-yours",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:web": "vite --port 5173 --strictPort",
+    "dev:api": "PORT=8787 tsx watch --env-file-if-exists=.env server/index.ts",
+    "build": "tsc --noEmit -p . && vite build",
+    "start": "NODE_ENV=production tsx --env-file-if-exists=.env server/index.ts",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "tsx --test server/scoring.test.ts",
+    "test:e2e": "node scripts/e2e/run.mjs",
+    "audio:audition": "tsx --env-file-if-exists=.env scripts/audio/audition-voices.ts",
+    "audio:generate": "tsx --env-file-if-exists=.env scripts/audio/generate-static-audio.ts"
+  },
+  "dependencies": {
+    "@fontsource/afacad": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "ajv": "^8.20.0",
+    "express": "^5.3.0",
+    "motion": "^14.11.1",
+    "multer": "^2.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "shadcn": "^4.23.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.7"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
