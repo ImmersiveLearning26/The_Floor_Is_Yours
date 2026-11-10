@@ -68,10 +68,10 @@ try {
   await waitText('Enter your name to continue.', 5000);
   await typeInto('#learner-name', 'Adaeze');
   await evaluate(`document.querySelector('form.composer').requestSubmit()`);
-  await waitText('Which issue will you argue?');
-  await waitFor(`!!document.querySelector('.issue')`, 10000, 'issue cards'); await sleep(1100); await shot('02a-carousel'); console.log('front before:', await evaluate(`document.querySelector('.prism-card[data-front=true]')?.innerText`)); await evaluate(`[...document.querySelectorAll('.issue')].find(b => b.textContent.includes('AI in assignments')).click()`);
-  await sleep(900);
-  console.log('front after:', await evaluate(`document.querySelector('.prism-card[data-front=true]')?.innerText`), '| question:', await evaluate(`document.querySelector('.issue-question')?.innerText`));
+  await waitText('Pick your issue.');
+  await waitFor(`!!document.querySelector('.issue')`, 10000, 'issue cards'); await sleep(1100); await evaluate(`[...document.querySelectorAll('.issue')].find(b => b.textContent.includes('AI in assignments')).click()`);
+  await sleep(600);
+  console.log('selected:', await evaluate(`document.querySelector('.issue[aria-checked=true]')?.innerText`), '| question:', await evaluate(`document.querySelector('.issue-question')?.innerText`));
   await shot('02-topics');
   await evaluate(`(() => { const b = [...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Open the briefing'); b.click(); b.click(); })()`); // double click → one run
   await waitText('Here’s your issue.');

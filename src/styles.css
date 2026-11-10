@@ -148,46 +148,11 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 .issue .label { display: flex; align-items: center; gap: 10px; padding: 14px 16px 16px; font-size: 15px; font-weight: 500; }
 .issue .label svg { width: 20px; height: 20px; flex: none; }
 .issue[data-selected="true"] { box-shadow: 0 0 0 2px var(--ink), 0 20px 44px -20px rgba(27, 28, 31, .5); }
-.issues[data-has="true"] .issue[data-selected="false"] { opacity: .5; filter: saturate(.6); }
+.issues[data-has="true"] .issue[data-selected="false"] { opacity: .62; filter: saturate(.75); }
+.issue .tick { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; box-shadow: 0 4px 12px -4px rgba(27, 28, 31, .45); }
+.issue .tick svg { width: 14px; height: 14px; }
+.issue .label { line-height: 1.35; }
 .issue-question { text-align: center; font-size: 18px; color: var(--soft); max-width: 640px; margin: 0 auto; line-height: 1.45; }
-
-/* Prism Carousel — 3D ring of issue cards; the front card is the active issue */
-.prism { position: relative; width: min(980px, 100%) !important; height: calc(var(--card) * 1.08); display: flex; align-items: center; justify-content: center; margin: 0 auto; touch-action: pan-y; user-select: none; }
-.prism-stage { position: relative; width: var(--card); height: 100%; perspective: calc(var(--card) * 4.2); perspective-origin: 50% 42%; cursor: grab; }
-.prism-stage:active { cursor: grabbing; }
-.prism-ring { position: absolute; inset: 0; transform-style: preserve-3d; }
-.prism-ring:focus-visible { outline: none; }
-.prism-card { position: absolute; left: 0; top: 4%; width: var(--card); backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: box-shadow .4s var(--ease); isolation: isolate; }
-.prism-card:hover:not(:disabled) { transform: none; }
-.prism-card .thumb { position: relative; aspect-ratio: 4 / 3; }
-.prism-card[data-front="true"] { box-shadow: 0 0 0 1.5px rgba(27, 28, 31, .85), 0 30px 60px -26px rgba(27, 28, 31, .55); }
-.prism-card[data-front="false"] { cursor: pointer; }
-/* iridescent prism edge: a conic spectrum ring whose hue rotates with the ring angle */
-.prism-edge { position: absolute; inset: -1.5px; border-radius: 25.5px; padding: 1.5px; pointer-events: none; z-index: 3;
-  background: conic-gradient(from calc(var(--prism-turn) * -2), rgba(51,135,250,.0), rgba(51,135,250,.75), rgba(139,123,255,.75), rgba(255,170,120,.6), rgba(114,182,250,.7), rgba(51,135,250,.0));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); opacity: .9; }
-.prism-card[data-front="false"] .prism-edge { opacity: .35; }
-/* light sweep across the image, driven by the ring angle */
-.prism-sheen { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light;
-  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.55) 45%, rgba(190,170,255,.35) 52%, transparent 66%);
-  background-size: 300% 100%; background-position: calc(50% + var(--prism-turn) * 0.9) 0; }
-.prism-arrow { position: absolute; top: 42%; z-index: 5; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--ink);
-  background: var(--glass); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 0 0 1px rgba(27,28,31,.07), 0 10px 26px -10px rgba(27,28,31,.25); transition: transform .5s var(--spring), background .15s; }
-.prism-arrow:hover:not(:disabled) { background: #fff; }
-.prism-arrow:active:not(:disabled) { transform: scale(.92); }
-.prism-arrow svg { width: 18px; height: 18px; }
-.prism-arrow.left { left: max(0px, calc(50% - var(--card) * 1.55)); }
-.prism-arrow.right { right: max(0px, calc(50% - var(--card) * 1.55)); }
-.prism-dots { position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
-.prism-dots i { width: 6px; height: 6px; border-radius: 3px; background: rgba(27,28,31,.18); transition: width .4s var(--spring), background .3s; }
-.prism-dots i[data-on="true"] { width: 20px; background: var(--focus-a); }
-@media (max-width: 720px) {
-  .prism-arrow { top: auto; bottom: -4px; width: 44px; height: 44px; }
-  .prism-arrow.left { left: 8px; } .prism-arrow.right { right: 8px; }
-  .prism { height: calc(var(--card) * 1.12 + 30px); }
-  .issue.prism-card { display: block; }
-  .prism-card .thumb { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
-}
 
 /* Briefing media */
 .media { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 16 / 9; background: #2b2a27; box-shadow: 0 34px 70px -34px rgba(27, 28, 31, .55); width: min(880px, 100%) !important; }
