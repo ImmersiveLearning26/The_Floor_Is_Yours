@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Facilitator review</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f7f6f2;--ink:#262624;--muted:#686862;--line:#e4e2dc;font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+body{margin:0;padding:28px;max-width:1100px;margin:auto}h1{font-size:20px}h2{font-size:16px;margin:0 0 6px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+.meta{color:var(--muted);font-size:13px}button{font:inherit;background:#20201e;color:#fff;border:0;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:36px}
+button.q{background:none;color:var(--ink);border:1px solid var(--line)}input,textarea,select{font:inherit;border:1px solid var(--line);border-radius:8px;padding:7px 9px}
+textarea{width:100%;min-height:60px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-top:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.pill{font-size:12px;border:1px solid var(--line);border-radius:20px;padding:2px 9px}
+pre{white-space:pre-wrap;background:#faf9f6;border-radius:8px;padding:10px;font-size:13px}
+</style>
+</head>
+<body>
+<h1>Facilitator review</h1>
+<p class="meta">Facilitators only. Use the facilitator token set for this deployment. Listen to the recording before rating delivery. Overrides require a reason and are kept as an append-only revision history.</p>
+<form id="login" class="card row"><label>Facilitator token <input type="password" id="token" autocomplete="off"></label><button>Sign in</button><span id="loginMsg" class="meta"></span></form>
+<div id="list"></div>
+<script type="module" src="/src/facilitator/main.ts"></script>
+</body>
+</html>

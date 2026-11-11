@@ -1,10 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { calculateScore, bandFor } from '../shared/scoring';
-import { validateJudgement, validateDelivery } from './validate';
-import { cuesFromAlignment, groupWords } from './providers/elevenlabs';
-import { answerFromGuide } from './taskGuide';
-import type { Rating } from '../shared/types';
+import { calculateScore, bandFor } from '../supabase/functions/_shared/scoring.ts';
+import { validateJudgement, validateDelivery } from '../supabase/functions/_shared/validate.ts';
+import { cuesFromAlignment, groupWords, evenCues } from '../supabase/functions/_shared/captions.ts';
+import { answerFromGuide } from '../supabase/functions/_shared/taskGuide.ts';
+import { encodeWav, parseWav, trimWav, peakDb } from '../supabase/functions/_shared/wav.ts';
+import type { Rating } from '../supabase/functions/_shared/types.ts';
 
 const r = (id: Rating['id'], level: number) => ({ id, level } as Rating);
 
@@ -51,23 +52,23 @@ test('valid judgement passes', () => {
 });
 test('fabricated quote is rejected', () => {
   const j = good(); j.ratings[0].evidence = ev('students must be banned from AI');
-  assert.ok(validateJudgement(j, { transcript, duration: 40 }).errors.some(e => e.includes('not in the transcript')));
+  assert.ok(validateJudgement(j, { transcript, duration: 40 }).errors.some((e: string) => e.includes('not in the transcript')));
 });
 test('out-of-bounds timestamp is rejected', () => {
   const j = good(); j.ratings[1].evidence = ev(null, 55, 59);
-  assert.ok(validateJudgement(j, { transcript, duration: 40 }).errors.some(e => e.includes('outside')));
+  assert.ok(validateJudgement(j, { transcript, duration: 40 }).errors.some((e: string) => e.includes('outside')));
 });
 test('duplicate criterion and wrong judge order are rejected', () => {
   const j = good(); j.ratings[2] = { ...j.ratings[0] };
   assert.ok(validateJudgement(j, { transcript, duration: 40 }).errors.length > 0);
   const k = good(); k.turns = [k.turns[1], k.turns[0], k.turns[2]];
-  assert.ok(validateJudgement(k, { transcript, duration: 40 }).errors.some(e => e.includes('order')));
+  assert.ok(validateJudgement(k, { transcript, duration: 40 }).errors.some((e: string) => e.includes('order')));
 });
 test('model cannot supply delivery from transcript or mention scores', () => {
   const j = good(); j.ratings[2].evidence = ev(null, 0, 10, 'audio');
-  assert.ok(validateJudgement(j, { transcript, duration: 40 }).errors.some(e => e.includes('must come from the transcript')));
+  assert.ok(validateJudgement(j, { transcript, duration: 40 }).errors.some((e: string) => e.includes('must come from the transcript')));
   const k = good(); k.turns[0].text = 'That earns you 74/100.';
-  assert.ok(validateJudgement(k, { transcript, duration: 40 }).errors.some(e => e.includes('numerical')));
+  assert.ok(validateJudgement(k, { transcript, duration: 40 }).errors.some((e: string) => e.includes('numerical')));
 });
 test('invalid schema (level 7, extra field) is rejected', () => {
   const j = good() as Record<string, unknown> & ReturnType<typeof good>; j.ratings[0].level = 7; (j as Record<string, unknown>).score = 100;
@@ -79,7 +80,7 @@ test('needsReview passes through without a publishable score', () => {
 });
 test('delivery requires audio evidence inside the recording', () => {
   const d: Rating = { id: 'delivery', level: 3, justification: 'x', evidence: ev(null, 1, 5, 'transcript') };
-  assert.ok(validateDelivery(d, 40).some(e => e.includes('audio')));
+  assert.ok(validateDelivery(d, 40).some((e: string) => e.includes('audio')));
   const ok: Rating = { id: 'delivery', level: 3, justification: 'x', evidence: ev(null, 1, 5, 'audio') };
   assert.deepEqual(validateDelivery(ok, 40), []);
   assert.ok(validateDelivery({ ...ok, evidence: ev(null, 50, 61, 'audio') }, 60).length > 0);
@@ -89,11 +90,29 @@ test('captions group into readable phrases', () => {
   const chars = [...text]; const t = chars.map((_, i) => i * 0.05);
   const cues = cuesFromAlignment({ characters: chars, character_start_times_seconds: t, character_end_times_seconds: t.map(x => x + 0.05) });
   assert.ok(cues.length >= 2);
-  assert.equal(cues.map(c => c.text).join(' '), text);
-  assert.ok(cues.every(c => c.text.split(' ').length <= 16));
+  assert.equal(cues.map((c: { text: string }) => c.text).join(' '), text);
+  assert.ok(cues.every((c: { text: string }) => c.text.split(' ').length <= 16));
   assert.equal(groupWords([]).length, 0);
 });
 test('task guide refuses to write the argument', () => {
   assert.match(answerFromGuide('Can you write my argument for me?', null), /can’t suggest/);
   assert.match(answerFromGuide('Which side is best?', null), /can’t suggest/);
+});
+
+test('even captions cover the text when the voice engine gives no timings', () => {
+  const cues = evenCues('One two three four. Five six seven eight nine ten.', 5);
+  assert.equal(cues.map(c => c.text).join(' '), 'One two three four. Five six seven eight nine ten.');
+  assert.ok(Math.abs(cues[cues.length - 1].end - 5) < 0.01);
+});
+test('WAV: parse, server-side trim to 60.0 s, peak level', () => {
+  const rate = 16000, pcm = new Int16Array(rate * 62);
+  for (let i = 0; i < pcm.length; i++) pcm[i] = Math.round(Math.sin(i / 20) * 16384);
+  const wav = encodeWav(pcm, rate);
+  const info = parseWav(wav)!;
+  assert.equal(info.sampleRate, 16000); assert.equal(info.channels, 1); assert.equal(info.duration, 62);
+  const cut = trimWav(wav, info, 60);
+  assert.equal(parseWav(cut)!.duration, 60);
+  assert.ok(Math.abs(peakDb(wav, info) - -6.0) < 0.2);
+  assert.equal(peakDb(encodeWav(new Int16Array(1600), rate), parseWav(encodeWav(new Int16Array(1600), rate))!), -120);
+  assert.equal(parseWav(new TextEncoder().encode('not a wav file at all, definitely not')), null);
 });

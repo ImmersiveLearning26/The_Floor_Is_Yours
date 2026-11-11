@@ -9,9 +9,10 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": false,
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
-    "types": ["node", "vite/client"]
+    "types": ["node", "vite/client"],
+    "paths": { "npm:@supabase/supabase-js@2": ["./node_modules/@supabase/supabase-js"] }
   },
-  "include": ["src", "shared", "server"]
+  "include": ["src", "shared", "server", "supabase/functions", "scripts/e2e/*.ts", "tests", "types"]
 }

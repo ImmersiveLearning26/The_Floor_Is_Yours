@@ -1,15 +1,5 @@
-import Ajv from 'ajv/dist/2020';
-import fs from 'node:fs';
-import path from 'node:path';
-import { ROOT } from './config';
-import type { CriterionId, FeedbackTurn, JudgeId, Rating } from '../shared/types';
-
-export const judgementSchema = JSON.parse(fs.readFileSync(path.join(ROOT, 'shared', 'assessment.schema.json'), 'utf8'));
-// Anthropic tool input_schema must not carry $schema/title keys.
-export const toolSchema = (() => { const { $schema: _s, title: _t, ...rest } = judgementSchema; return rest; })();
-
-const ajv = new Ajv({ allErrors: true });
-const check = ajv.compile(judgementSchema);
+import { checkJudgementShape } from './schema.ts';
+import type { CriterionId, FeedbackTurn, JudgeId, Rating } from './types.ts';
 
 export type ModelJudgement = {
   needsReview: boolean; reviewReason: string | null; ratings: Rating[];
@@ -27,7 +17,8 @@ const CONTENT: CriterionId[] = ['position', 'reasoning', 'structure'];
  * transcript-sourced content evidence, three distinct judges in order and non-empty texts.
  */
 export function validateJudgement(raw: unknown, ctx: { transcript: string; duration: number }): { errors: string[]; value: ModelJudgement | null } {
-  if (!check(raw)) return { errors: (check.errors ?? []).map(e => `${e.instancePath || 'root'} ${e.message}`), value: null };
+  const shape = checkJudgementShape(raw);
+  if (shape.length) return { errors: shape.slice(0, 20), value: null };
   const j = raw as unknown as ModelJudgement;
   const errors: string[] = [];
   if (j.needsReview) return { errors, value: j };

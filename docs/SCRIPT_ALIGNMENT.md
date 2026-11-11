@@ -7,21 +7,21 @@ Source: `docs/Original_Storyboard.txt` (UCC1101 storyboard v1.0). Design and lay
 | Script requirement | Where in the build |
 |---|---|
 | Exactly three scenes (briefing, 60-second pitch, panel verdict); topic picker, name and results are non-scene screens; no scene numbers shown | `src/App.tsx` stages |
-| Three topics with the approved questions, boundaries and narrator scripts; online-only premise, no lecture halls | `shared/content.ts`, briefing stills |
+| Three topics with the approved questions, boundaries and narrator scripts; online-only premise, no lecture halls | `supabase/functions/_shared/content.ts`, briefing stills |
 | One topic per run, locked when the briefing opens, other topics unavailable until Finish | `POST /api/runs` (409 on a second topic), idempotent create |
 | One recorded speech per run, 60.0 s cap, timer and recording start together, auto stop, no pause/reset/retake | `src/lib/capture.ts`, server trims to 60.0 s |
 | Begin only after mic permission + readiness (plus consent) | `P04MicCheck`, `/capture-start` |
 | Invalid capture → technical re-record, not a zero | `/capture-failed`, technical recovery message |
-| Four criteria, 0–4 anchors, weights 30/30/25/15, exact quarter points, round final total half-up, bands 85/70/50 | `shared/scoring.ts`, `server/prompt.ts`, 14 tests |
-| Topic neutrality; no statistics required; accent not penalised; not-scored list | model instruction in `server/prompt.ts` |
-| Assessment uses the real recording: transcript for content, audio for delivery | `server/assessment.ts` |
+| Four criteria, 0–4 anchors, weights 30/30/25/15, exact quarter points, round final total half-up, bands 85/70/50 | `supabase/functions/_shared/scoring.ts`, `_shared/prompt.ts`, unit + API tests |
+| Topic neutrality; no statistics required; accent not penalised; not-scored list | model instruction in `supabase/functions/_shared/prompt.ts` |
+| Assessment uses the real recording: transcript for content, audio for delivery | `supabase/functions/_shared/pipeline.ts` |
 | Evaluation failure: no invented mark, recording kept, retry same file, support link | processing scene + `/evaluate` retry |
 | Low-confidence → Needs review, no score shown | `needs-review` path |
 | Verdict is dynamic and evidence-based, not a canned clip; text fallback if voice fails | validated turns, voice optional |
 | Improvement chosen from the lowest criterion with tie-break Reasoning → Position → Structure → Delivery | model instruction |
 | Results: score largest, criteria, one strength, one improvement, replay (passive) | `P08Results` |
 | Finish closes the run, preserves the audit, returns to topic selection | `/finish` |
-| Facilitator override with reason and audit trail; never expose another learner's audio | `/facilitator`, owner-only routes |
+| Facilitator override with reason and audit trail; never expose another learner's audio | `/facilitator.html`, owner-only routes |
 | Consent and disclosure before capture; retention institution-configured | consent step, privacy sheet, retention sweep |
 | Captions default on (≥18px), keyboard access, timer announced without disrupting speech, no colour-only status | scenes + `role=status` lines |
 | No leaderboard, no music during recording | — |

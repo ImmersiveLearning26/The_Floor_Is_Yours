@@ -1,0 +1,5 @@
+# Lovable Cloud reads this file. Lovable adds its own project_id when the repo is connected.
+# The api function checks every caller itself (anonymous learner token, facilitator token, or the internal
+# service key), so the platform's JWT gate is off — it would otherwise block the internal step calls.
+[functions.api]
+verify_jwt = false

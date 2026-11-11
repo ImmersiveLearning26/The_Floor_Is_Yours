@@ -1,5 +1,8 @@
 node_modules
 dist
 data
-.env
+# Local dev server secrets (facilitator token, cookie secret). Never commit.
+.env.server
 *.local
+# NOTE: .env is NOT ignored on purpose — Lovable keeps the project's public VITE_SUPABASE_* values there.
+# Never put secrets in .env; Lovable Cloud secrets are set in the Lovable UI.

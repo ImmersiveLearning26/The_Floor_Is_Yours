@@ -37,7 +37,7 @@ ElevenLabs could not be reached from the build machine (network timeout), so **n
 | `public/media/audio/briefing-t03.mp3` + `.json` | Narrator | **to generate** |
 | `public/media/audio/chair-introduction.mp3` + `.json` | Ada (chair) | **to generate** |
 | `public/media/audio/setup-ambience.mp3` | sound effect | **to generate** |
-| Judge feedback (per evaluation, private) | Ada, Tunde, Zainab | generated **at runtime** after each validated assessment |
+| Judge feedback (per evaluation, private) | Ada, Tunde, Zainab | generated **at runtime** by Lovable AI text-to-speech (`speak` in `supabase/functions/_shared/ai/lovable.ts`) |
 
 ### Step 1 — choose and approve the four Nigerian voices (a person must listen)
 ```bash
@@ -49,25 +49,24 @@ This writes `docs/voice-audition/candidates.md` (Nigerian-English voices from th
 - **Tunde** — Nigerian man ~45, measured, thoughtful
 - **Zainab** — Nigerian woman ~35, clear and reassuring
 
-A generic American/British voice is not an acceptable substitute. Add the chosen voices to your ElevenLabs library, then put their IDs in `.env`:
+A generic American/British voice is not an acceptable substitute. This is a one-time production step on your own computer (the finished `.mp3` files are committed; the app itself never calls ElevenLabs). Add the chosen voices to your ElevenLabs library, then put their IDs in the git-ignored `.env.server`:
 ```
 ELEVENLABS_API_KEY=...
 ELEVENLABS_NARRATOR_VOICE_ID=...
 ELEVENLABS_ADA_VOICE_ID=...
-ELEVENLABS_TUNDE_VOICE_ID=...
-ELEVENLABS_ZAINAB_VOICE_ID=...
 ```
+(Alternatively, render the same fixed texts with Lovable AI text-to-speech and save them to the same paths — keep Ada's chair voice consistent with her runtime voice.)
 
 ### Step 2 — render the fixed audio once
 ```bash
 npm run audio:generate
 ```
-This renders the three briefing narrations and the chair introduction with **timed captions** (`.json` next to each `.mp3`), and the calm outdoor ambience (generated as a sound effect, crossfaded into a seamless loop and normalised quiet). Re-run a single part with `--only=briefing|chair|ambience`; add `--force` to overwrite. Scripts are the exact approved texts in `shared/content.ts`.
+This renders the three briefing narrations and the chair introduction with **timed captions** (`.json` next to each `.mp3`), and the calm outdoor ambience (generated as a sound effect, crossfaded into a seamless loop and normalised quiet). Re-run a single part with `--only=briefing|chair|ambience`; add `--force` to overwrite. Scripts are the exact approved texts in `supabase/functions/_shared/content.ts`.
 
 ### Step 3 — listen before release
 - Narration and chair at a natural pace (the chair runs ~20–25 s; don't speed it up).
 - Ambience: soft, no sudden birds, no music; it plays only in setup screens and stops before recording.
-- Judge feedback voices are generated automatically once the four voice IDs are set; captions are aligned from ElevenLabs timestamps.
+- Judge feedback voices are generated at runtime once `speak` is connected in Lovable (docs/LOVABLE_SETUP.md). Ask for Ada's runtime voice to match the chair recording.
 
 ## 3. Optional institution asset
 `public/media/brand/miva.svg` — the approved logo, only if the opening splash is wanted. Never recreate it from text.

@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { topics, chairScript } from '../../shared/content';
-import { cuesFromAlignment } from '../../server/providers/elevenlabs';
+import { cuesFromAlignment } from '../../supabase/functions/_shared/captions.ts';
 
 const key = process.env.ELEVENLABS_API_KEY ?? '';
 const model = process.env.ELEVENLABS_TTS_MODEL || 'eleven_multilingual_v2';

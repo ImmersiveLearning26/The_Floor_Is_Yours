@@ -16,6 +16,7 @@ import { AudioDirector, type SpeechSnapshot } from './lib/audio';
 import { MicService } from './lib/mic';
 import { CaptureService, MAX_MS } from './lib/capture';
 import { localRecordings } from './lib/idb';
+import { toWav16k } from './lib/wav';
 import { ambienceAudio, chairAudio, topicById } from '../shared/content';
 import type { Capabilities, JobStage, MicStatus, ProcessingStatus, RunView, Stage, TopicId } from '../shared/types';
 
@@ -66,6 +67,7 @@ export default function App() {
   const [feedbackIndex, setFeedbackIndex] = useState(0);
   const autoAdvance = useRef(true);
   const [replayOpen, setReplayOpen] = useState(false);
+  const [replayUrls, setReplayUrls] = useState<{ play: string; download: string } | null>(null);
   const [drawer, setDrawer] = useState<DrawerSection | null>(null);
   const [prefs, setPrefsState] = useState<SoundPrefs>(loadPrefs);
   const [speech, setSpeech] = useState<SpeechSnapshot>(director.snapshot);
@@ -178,10 +180,13 @@ export default function App() {
 
   const uploadAndEvaluate = useCallback(async (runId: string, blob: Blob) => {
     setProc(p => ({ ...p, status: 'uploading', message: null, slow: false }));
+    let wav: Blob;
+    try { wav = await toWav16k(blob); }
+    catch { void localRecordings.remove(runId); localBlob.current = null; await technicalRecovery(runId, 'decode-failed'); return; }
     let lastErr: unknown = null;
     for (let i = 0; i < 3; i++) {
       try {
-        const r = await api.upload(runId, blob);
+        const r = await api.upload(runId, wav);
         setRun(r.run);
         setProc(p => ({ ...p, saved: 'server' }));
         void localRecordings.remove(runId); localBlob.current = null;
@@ -286,7 +291,10 @@ export default function App() {
   };
   const downloadRecording = async () => {
     const r = runRef.current; if (!r) return;
-    if (r.recording) { window.location.href = api.recordingUrl(r.id, true); return; }
+    if (r.recording) {
+      try { window.location.href = await api.recordingUrl(r.id, true); } catch (e) { setProc(p => ({ ...p, message: msgOf(e, 'The recording link could not be created.') })); }
+      return;
+    }
     const local = localBlob.current?.runId === r.id ? localBlob.current : await localRecordings.get(r.id);
     if (!local) return;
     const url = URL.createObjectURL(local.blob);
@@ -337,6 +345,16 @@ export default function App() {
     director.stopSpeech(); setReplayOpen(false);
     goto('results');
     void api.toResults(r.id).then(res => setRun(res.run)).catch(() => {});
+  };
+
+  // ── P08 replay (signed, short-lived links fetched when opened) ──
+  const toggleReplay = async () => {
+    const r = runRef.current; if (!r) return;
+    if (replayOpen) { setReplayOpen(false); return; }
+    try {
+      const [play, download] = await Promise.all([api.recordingUrl(r.id), caps?.recordingDownload ? api.recordingUrl(r.id, true) : Promise.resolve('')]);
+      setReplayUrls({ play, download }); setReplayOpen(true);
+    } catch (e) { setError(msgOf(e, 'Your recording could not be loaded.')); }
   };
 
   // ── P08 finish ────────────────────────────────────────────
@@ -435,8 +453,8 @@ export default function App() {
   } else if (stage === 'results' && assessment && topic) {
     scene = 'results';
     page = <P08Results result={assessment} topicLabel={topic.label} finishing={busy === 'finish'} error={error} canReplay={!!run?.recording} replayOpen={replayOpen}
-      recordingUrl={run ? api.recordingUrl(run.id) : ''} downloadUrl={run ? api.recordingUrl(run.id, true) : ''} canDownload={!!caps?.recordingDownload}
-      onReplay={() => setReplayOpen(o => !o)} onFinish={() => void finish()} />;
+      recordingUrl={replayUrls?.play ?? ''} downloadUrl={replayUrls?.download ?? ''} canDownload={!!caps?.recordingDownload && !!replayUrls?.download}
+      onReplay={() => void toggleReplay()} onFinish={() => void finish()} />;
   } else {
     page = <Scene label="Loading"><Rise key="b" className="center"><button className="primary" onClick={() => void loadSession()}>Reload</button></Rise></Scene>;
   }
